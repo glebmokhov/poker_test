@@ -1,0 +1,120 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Hand",
+  "type": "object",
+  "required": [
+    "hand_id",
+    "table_id",
+    "created_at",
+    "players",
+    "actions",
+    "pot"
+  ],
+  "properties": {
+    "hand_id": {
+      "type": "string"
+    },
+    "table_id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "players": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "player_id",
+          "name",
+          "seat",
+          "stack"
+        ],
+        "properties": {
+          "player_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "seat": {
+            "type": "integer"
+          },
+          "stack": {
+            "type": "integer"
+          },
+          "hole_cards": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "timestamp",
+          "round",
+          "player_id",
+          "action"
+        ],
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "round": {
+            "type": "string"
+          },
+          "player_id": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "pot": {
+      "type": "integer"
+    },
+    "winners": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer"
+      }
+    },
+    "community": {
+      "type": "object",
+      "properties": {
+        "flop": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "turn": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "river": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
